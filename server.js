@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const heimdall = require('heimdall-nodejs-sdk');
 
 const app = express();
 const PORT = 3000;
@@ -8,6 +9,7 @@ const PORT = 3000;
 // Middleware to parse JSON payloads
 app.use(cors());
 app.use(bodyParser.json());
+heimdall.ping(app);
 
 // Endpoint to receive webhook data
 app.post('/log', (req, res) => {
